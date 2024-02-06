@@ -37,6 +37,13 @@
 
             <li class="nav-item">
               <a class="nav-link " href="#" >
+                Employee
+              </a>
+              
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="#" >
                 BUY T-SHIRT
               </a>
             </li>
