@@ -36,6 +36,11 @@ const route = [
                 name: 'buyTshirt',
                 component: () => import('../views/BuyTshirt.vue')
             },
+            {
+                path: '/t-shirts-store/Employee',
+                name: 'employee',
+                component: () => import('../views/Employee.vue')
+            },
         ]
     },
 ]
