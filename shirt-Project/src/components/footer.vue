@@ -1,4 +1,5 @@
 <template>
+  
     <footer class="footer">
   <div class="footer__addr">
     <h1 class="footer__logo">Something</h1>
@@ -88,6 +89,8 @@
     </div>
   </div>
 </footer>
+
+  
 </template>
 
 <script setup>
@@ -96,11 +99,12 @@
 
 <style  scoped>
 .footer {
+  margin-top: 60px;
   display: flex;
   flex-flow: row wrap;
   padding: 30px 30px 20px 30px;
   color: #2f2f2f;
-  background-color: #fff;
+  background-color: #ffe5ec;
   border-top: 1px solid #e5e5e5;
 }
 

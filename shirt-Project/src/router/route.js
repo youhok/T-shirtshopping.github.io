@@ -7,9 +7,14 @@ const route = [
         component: publicLayout,
         children: [
             {
-                path: '/t-shirts-store',
+                path: '/',
                 name: 'home',
-                component: () => import('../views/T-ShirtHome.vue')
+                component: () => import('../views/T-ShirtHome.vue'),
+            },
+            {
+                path: '/t-shirts-store/product/t-shirt-name-1',
+                name: 'produstshirt-1',
+                component: () => import('../views/produstDetail/Shirtone.vue'),
             },
             {
                 path: '/t-shirts-store/about',
@@ -35,6 +40,11 @@ const route = [
                 path: '/t-shirts-store/buyTshirt',
                 name: 'buyTshirt',
                 component: () => import('../views/BuyTshirt.vue')
+            },
+            {
+                path: '/t-shirts-store/Employee',
+                name: 'employee',
+                component: () => import('../views/Employee.vue')
             },
         ]
     },
