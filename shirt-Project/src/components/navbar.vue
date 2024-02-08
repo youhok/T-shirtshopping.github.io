@@ -41,8 +41,21 @@
             </li>
 
             <li class="nav-item">
+<<<<<<< HEAD
               <router-link  class="nav-link"  to="/t-shirts-store/buyTshirt"> BUY T-SHIRT</router-link>
             
+=======
+              <a class="nav-link " href="#" >
+                Employee
+              </a>
+              
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link " href="#" >
+                BUY T-SHIRT
+              </a>
+>>>>>>> 9c641ee99225918e06dcc3b05525e47438f86a37
             </li>
           </ul>
 
