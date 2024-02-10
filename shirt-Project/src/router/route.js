@@ -17,6 +17,21 @@ const route = [
                 component: () => import('../views/produstDetail/Shirtone.vue'),
             },
             {
+                path: '/t-shirts-store/product/t-shirt-name-2',
+                name: 'produstshirt-2',
+                component: () => import('../views/produstDetail/Shirttwo.vue'),
+            },
+            {
+                path: '/t-shirts-store/product/t-shirt-name-3',
+                name: 'produstshirt-3',
+                component: () => import('../views/produstDetail/ShirtThree.vue'),
+            },
+            {
+                path: '/t-shirts-store/product/t-shirt-name-4',
+                name: 'produstshirt-4',
+                component: () => import('../views/produstDetail/Shirtfour.vue'),
+            },
+            {
                 path: '/t-shirts-store/about',
                 name: 'about',
                 component: () => import('../views/About.vue')

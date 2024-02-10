@@ -42,19 +42,19 @@
           <card
             image-src="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-06-a-300x366.jpg"
             info="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nemo, libero placeat eveniet saepe maxime optio ut perferendis"
-            Product="shirt" />
+            Product="shirt" @produstshirt-1="clickGotoShirt2()" />
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6  mb-4">
           <card
             image-src="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-10-a-300x366.jpg"
             info="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nemo, libero placeat eveniet saepe maxime optio ut perferendis"
-            Product="shirt" />
+            Product="shirt" @produstshirt-1="clickGotoShirt3()" />
         </div>
         <div class="col-lg-3 col-md-6 col-sm-6 mb-4">
           <card
             image-src="https://websitedemos.net/t-shirts-store-04/wp-content/uploads/sites/1115/2022/07/product-08-a-300x366.jpg"
             info="Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates nemo, libero placeat eveniet saepe maxime optio ut perferendis"
-            Product="shirt" />
+            Product="shirt" @produstshirt-1="clickGotoShirt4()" />
         </div>
       </div>
     </div>
@@ -219,6 +219,8 @@
 </template>
 
 <script setup>
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 import btncomponet from '@/components/btncomponet.vue';
 import card from '../components/card.vue';
 import footerContant from '@/components/footer.vue';
@@ -233,9 +235,23 @@ const clickGotoShirt1 = ()=>{
   })
 }
 
+const clickGotoShirt2 = ()=>{
+  router.push({
+    path:'/t-shirts-store/product/t-shirt-name-2'
+  })
+}
+const clickGotoShirt3 = ()=>{
+  router.push({
+    path:'/t-shirts-store/product/t-shirt-name-3'
+  })
+}
+const clickGotoShirt4 = ()=>{
+  router.push({
+    path:'/t-shirts-store/product/t-shirt-name-4'
+  })
+}
 
-import AOS from 'aos';
-import 'aos/dist/aos.css';
+
 
 onMounted(() => {
   AOS.init();
