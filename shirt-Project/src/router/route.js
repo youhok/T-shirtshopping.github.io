@@ -51,11 +51,7 @@ const route = [
                 name: 'womenshirt',
                 component: () => import('../views/Womenshirt.vue')
             },
-            {
-                path: '/t-shirts-store/buyTshirt',
-                name: 'buyTshirt',
-                component: () => import('../views/BuyTshirt.vue')
-            },
+           
             {
                 path: '/t-shirts-store/Employee',
                 name: 'employee',

@@ -9,6 +9,7 @@
               Slick.
               Modern.
               <br>
+              
               Awesome.
             </h1>
 
@@ -84,30 +85,30 @@
       </div>
     </div>
 
-    <div class="container-fluid  mt-5 " data-aos="zoom-in">
-      <div class="row">
-        <div class="col-12 position-relative">
-          <!-- Image -->
-          <div class="image-overlay">
-            <img src="../assets/image/2e431534b783468b89e1996e93c0b88c.thumbnail.0000000000.jpg" alt="" class="img-fluid">
-            <div class="overlay"></div>
-          </div>
+      <div class="container-fluid  mt-5 " data-aos="zoom-in">
+        <div class="row">
+          <div class="col-12 position-relative">
+            <!-- Image -->
+            <div class="image-overlay">
+              <img src="../assets/image/2e431534b783468b89e1996e93c0b88c.thumbnail.0000000000.jpg" alt="" class="img-fluid">
+              <div class="overlay"></div>
+            </div>
 
 
-          <!-- Centered text and button -->
-          <div class="position-absolute top-50 start-50 translate-middle text-center">
-            <p class="fs-6 text-white">NEW COLLECTION</p>
-            <h2 class="text-white">
-              Be different in your own way!
-              Find your unique style
-            </h2>
-            <div class="d-grid gap-2 d-md-block">
-              <btncomponet text="Shop Collection" />
+            <!-- Centered text and button -->
+            <div class="position-absolute top-50 start-50 translate-middle text-center">
+              <p class="fs-6 text-white">NEW COLLECTION</p>
+              <h2 class="text-white">
+                Be different in your own way!
+                Find your unique style
+              </h2>
+              <div class="d-grid gap-2 d-md-block">
+                <btncomponet text="Shop Collection" />
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
     <div class="container mt-5">
       <div class="row  align-items-center">
@@ -219,6 +220,7 @@
 </template>
 
 <script setup>
+
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import btncomponet from '@/components/btncomponet.vue';
@@ -227,6 +229,9 @@ import footerContant from '@/components/footer.vue';
 import { onMounted } from "vue"
 import { useRouter } from 'vue-router'
 const router = useRouter();
+
+
+
 
 
 const clickGotoShirt1 = ()=>{

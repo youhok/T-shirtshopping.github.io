@@ -4,7 +4,7 @@
         <div class="row ">
             <!-- Your product cards -->
             <!-- Loop through your items and display them -->
-            <div class="col-lg-3 bg-body-secondary">
+            <div class="col-lg-3 bg-body-secondary" v-if="toggleSidebar.isShowSidebar">
                 <div class="d-flex mt-3 justify-content-between">
                     <h5>Shopping Cart</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -96,6 +96,8 @@ import checkBox from "@/components/checkBox.vue";
 const cartItems = ref([]);
 const loading = ref(false);
 console.log(cartItems.value)
+import { useToggleSidebarStore } from '../stores/toggleSidebar';
+const toggleSidebar = useToggleSidebarStore();
 
 const items = ref([
     {
