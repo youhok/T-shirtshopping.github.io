@@ -1,27 +1,26 @@
-.
 <template>
     <div class="container-fluid">
-        <div class="row ">
-            <!-- Your product cards -->
-            <!-- Loop through your items and display them -->
-            <div class="col-lg-3 bg-body-secondary" v-if="toggleSidebar.isShowSidebar">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-lg-3 col-md-12 bg-body-secondary  ">
                 <div class="d-flex mt-3 justify-content-between">
                     <h5>Shopping Cart</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                    <hr>
                 </div>
                 <hr>
-                <div class="card mt-3 mb-3" v-for="(item, index) in cartItems" :key="index">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <img :src="item.imgSrc" class="img-fluid h-100" alt="...">
+
+                <div class="card mt-3 float-right" v-for="(item, index) in cartItems" :key="index">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <img class="d-block w-100" :src="item.imgSrc" alt="">
                         </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ item.name }}</h5>
-                                <p class="card-text">Price: {{ item.price * item.quantity }} $</p>
-                                <p class="card-text">
-                                    <checkBox />
-                                <div class="d-flex justify-content-between">
+                        <div class="col-sm-7">
+                            <div class="card-block">
+                                <h4 class="card-title mt-2">{{ item.name }}</h4>
+                                <p>Price: {{ item.price * item.quantity }} $</p>
+                                <checkBox />
+                                <div class="container">
+                                    <div class="d-flex justify-content-between mt-4 ">
                                     Quantity: {{ item.quantity }}
                                     <div class="d-flex gap-2">
                                         <button @click="increaseQuantity(index)"
@@ -29,36 +28,34 @@
                                         <button @click="decreaseQuantity(index)"
                                             class="btn btn-sm btn-outline-dark">-</button>
                                     </div>
-
                                 </div>
-
-                                </p>
                                 <button type="button" @click="buyNow(index)"
-                                    class="btn btn-dark w-100 p-3 rounded-0 text-warning">
+                                    class="btn btn-dark w-100 p-3 rounded-0 text-warning mt-4 ">
                                     <span v-if="!loading">Buy now</span>
                                     <span v-else>Loading...</span>
                                 </button>
 
+                                </div>
+                                
                             </div>
                         </div>
+
                     </div>
                 </div>
-
             </div>
-            <div class="col-lg-9">
-                <div class="container mt-3">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
-                        <div class="col mt-3" v-for="item in items" :key="item.id">
 
+            <!-- Main Content -->
+            <div class="col-lg-9 col-md-12">
+                <div class="container mt-3">
+                    <div class="row">
+                        <div class="col mt-3" v-for="item in items" :key="item.id">
                             <div class="card border-0 rounded-0 shadow" style="width: 18rem;">
-                                <img :src="`${item.imgSrc}`" class="img-fluid rounded-0" alt="...">
+                                <img :src="`${item.imgSrc}`" class="img-fluid image rounded-0" alt="...">
                                 <div class="card-body mt-1 mb-1">
                                     <div class="row">
                                         <div class="col-10">
                                             <h4 class="card-title">{{ item.name }}</h4>
-                                            <p class="card-text">
-                                                Size: {{ item.size }}
-                                            </p>
+                                            <p class="card-text">Size: {{ item.size }}</p>
                                         </div>
                                         <div class="col-2">
                                             <i class="bi bi-bookmark-plus fs-2"></i>
@@ -77,16 +74,14 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </div>
     </div>
 </template>
+  
 
 <script setup>
 import { ref } from "vue";
@@ -110,7 +105,7 @@ const items = ref([
     },
     {
         id: 2,
-        name: "Blue Shirt , White T-Shirt",
+        name: "Blue Shirt",
         price: 17,
         quantity: 2,
         size: "S M L XL",
@@ -118,7 +113,7 @@ const items = ref([
     },
     {
         id: 3,
-        name: "Blue Shirt , White T-Shirt",
+        name: "Green Shirt ,White T-Shirt",
         price: 22,
         quantity: 3,
         size: "S M L XL",
@@ -126,7 +121,7 @@ const items = ref([
     },
     {
         id: 4,
-        name: "Blue Shirt , White T-Shirt",
+        name: "Blue Shirt ,",
         price: 28,
         quantity: 4,
         size: "S M L XL",
@@ -206,6 +201,8 @@ const buyNow = (index) => {
 </script>
 
 <style scoped>
-
-
+.image{
+    height: 80%;
+    width: auto;
+}
 </style>

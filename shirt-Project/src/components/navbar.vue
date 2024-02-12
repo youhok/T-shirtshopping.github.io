@@ -22,30 +22,10 @@
 
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
-            <li class="nav-item">
-              <router-link  class="nav-link" aria-current="page"  to="/t-shirts-store/contact">CONTACT</router-link>
-          
-            </li>
-            <li class="nav-item">
-              <router-link  class="nav-link"  to="/t-shirts-store/about">ABOUT</router-link>
-              
-            </li>
-            <li class="nav-item">
-              <router-link  class="nav-link"  to="/t-shirts-store/menshirt">MEN</router-link>
-            </li>
-
-            <li class="nav-item">
-              <router-link  class="nav-link"  to="/t-shirts-store/womenshirt">WOMEN</router-link>
-           
-
-            </li>
-
-            <li class="nav-item">
-              <router-link  class="nav-link"  to="/t-shirts-store/Employee">Employee</router-link>
-              
+            <li class="nav-item" v-for="route in publicRoutes" :key="route.name">
+              <router-link  :to="route.path"  class="nav-link" aria-current="page">{{ route.name }}</router-link>
             </li>
           
-            
           </ul>
 
          
@@ -63,6 +43,17 @@
 <script setup>
 import { useToggleSidebarStore } from '../stores/toggleSidebar';
 const toggleSidebar = useToggleSidebarStore();
+import route from '@/router/route';
+
+const excludedRouteNames = [
+'produstshirt-1',
+'produstshirt-2',
+'produstshirt-3',
+'produstshirt-4',
+'home',
+];
+
+const publicRoutes = route[0].children.filter((rc) => !excludedRouteNames.includes(rc.name))
 
 
 </script>
