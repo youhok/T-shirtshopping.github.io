@@ -24,10 +24,10 @@
           <ul class="navbar-nav justify-content-center flex-grow-1 pe-3">
             <li class="nav-item">
               <router-link  class="nav-link" aria-current="page"  to="/t-shirts-store/contact">CONTACT</router-link>
-             
+          
             </li>
             <li class="nav-item">
-              <router-link  class="nav-link"  to="/t-shirts-store/contact">ABOUT</router-link>
+              <router-link  class="nav-link"  to="/t-shirts-store/about">ABOUT</router-link>
               
             </li>
             <li class="nav-item">
@@ -43,20 +43,15 @@
             <li class="nav-item">
               <router-link  class="nav-link"  to="/t-shirts-store/Employee">Employee</router-link>
               
-              
             </li>
-
-            <li class="nav-item">
-              <a class="nav-link " href="#" >
-                BUY T-SHIRT
-              </a>
-            </li>
+          
+            
           </ul>
 
-
-          <form class="d-flex mt-3 mt-lg-0" role="search">
-            <button class="btn btn-outline-success w-100" type="submit"><i class="bi bi-bag-heart"></i></button>
-          </form>
+         
+          <div class="d-flex mt-3 mt-lg-0">
+            <button class="btn btn-outline-success w-100" type="submit" @click="toggleSidebar.toggleSidebar()"><i class="bi bi-bag-heart"></i></button>
+          </div>
         </div>
       </div>
     </div>
@@ -66,6 +61,9 @@
 </template>
 
 <script setup>
+import { useToggleSidebarStore } from '../stores/toggleSidebar';
+const toggleSidebar = useToggleSidebarStore();
+
 
 </script>
 
@@ -139,4 +137,5 @@
   opacity: 1;
   top: -7px;
   right: -7px;
-}</style>
+}
+</style>

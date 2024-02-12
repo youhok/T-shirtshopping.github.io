@@ -1,168 +1,181 @@
+.
 <template>
-    <div class="container">
-      <h1 class="text-center">Women</h1>
-      <div class="row row-col-1 rows-md-3 g-4 py-5">
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img
-              src="/src/assets/image/womenshirt1.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Green Shirt</h5>
-              <p class="card-text">Size S M X L XL</p>
+    <div class="container-fluid">
+        <div class="row ">
+            <!-- Your product cards -->
+            <!-- Loop through your items and display them -->
+            <div class="col-lg-3 bg-body-secondary">
+                <div class="d-flex mt-3 justify-content-between">
+                    <h5>Shopping Cart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <hr>
+                <div class="card mt-3 mb-3" v-for="(item, index) in cartItems" :key="index">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img :src="item.imgSrc" class="img-fluid h-100" alt="...">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">{{ item.name }}</h5>
+                                <p class="card-text">Price: {{ item.price * item.quantity }} $</p>
+                                <p class="card-text">
+                                    <checkBox />
+                                <div class="d-flex justify-content-between">
+                                    Quantity: {{ item.quantity }}
+                                    <div class="d-flex gap-2">
+                                        <button @click="increaseQuantity(index)"
+                                            class="btn btn-sm btn-outline-dark">+</button>
+                                        <button @click="decreaseQuantity(index)"
+                                            class="btn btn-sm btn-outline-dark">-</button>
+                                    </div>
+
+                                </div>
+
+                                </p>
+                                <button type="button" @click="buyNow(index)"
+                                    class="btn btn-dark w-100 p-3 rounded-0 text-warning">
+                                    <span v-if="!loading">Buy now</span>
+                                    <span v-else>Loading...</span>
+                                </button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-            <div class="d-flex justify-content-around mb-5">
-              <h3>30$</h3>
-              <button class="button-hover-addcart button">
-                <span>Add to cart</span><font-awesome-icon icon="cart-shopping" />
-              </button>
+            <div class="col-lg-9">
+                <div class="container mt-3">
+                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3">
+                        <div class="col mt-3" v-for="item in items" :key="item.id">
+
+                            <div class="card border-0 rounded-0 shadow" style="width: 18rem;">
+                                <img :src="`${item.imgSrc}`" class="img-fluid rounded-0" alt="...">
+                                <div class="card-body mt-1 mb-1">
+                                    <div class="row">
+                                        <div class="col-10">
+                                            <h4 class="card-title">{{ item.name }}</h4>
+                                            <p class="card-text">
+                                                Size: {{ item.size }}
+                                            </p>
+                                        </div>
+                                        <div class="col-2">
+                                            <i class="bi bi-bookmark-plus fs-2"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row align-items-center text-center g-0">
+                                    <div class="col-4">
+                                        <h5>{{ item.price }} $</h5>
+                                    </div>
+                                    <div class="col-8">
+                                        <button class="btn btn-dark w-100 p-3 rounded-0 text-warning"
+                                            @click="addToCart(item)">
+                                            <span>Add to Shopping</span><i class="fa fa-shopping-cart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+
             </div>
-          </div>
         </div>
-  
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img
-              src="/src/assets/image/womenshirt2.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">White Shirt</h5>
-              <p class="card-text">Size S M X L XL</p>
-            </div>
-            <div class="d-flex justify-content-around mb-5">
-              <h3>40$</h3>
-              <button class="button-hover-addcart button">
-                <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img
-              src="/src/assets/image/womenshirt3.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Green & White Shirt</h5>
-              <p class="card-text">Size S M X L XL</p>
-            </div>
-            <div class="d-flex justify-content-around mb-5">
-              <h3>30$</h3>
-              <button class="button-hover-addcart button">
-                <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img
-              src="/src/assets/image/womenshirt4.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">White Long Sleeve Shirt</h5>
-              <p class="card-text">Size S M X L XL</p>
-            </div>
-            <div class="d-flex justify-content-around mb-5">
-              <h3>120$</h3>
-              <button class="button-hover-addcart button">
-                <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col">
-          <div class="card" style="width: 18rem">
-            <img
-              src="/src/assets/image/womenshirt5.jpg"
-              class="card-img-top"
-              alt="..."
-            />
-            <div class="card-body">
-              <h5 class="card-title">Kakada Sophorn</h5>
-              <p class="card-text">Size XLLLLLLLLL</p>
-            </div>
-            <div class="d-flex justify-content-around mb-5">
-              <h3>2000000$</h3>
-              <button class="button-hover-addcart button">
-                <span>Add to cart</span><i class="fa fa-shopping-cart"></i>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-    
-  </template>
-  
-  <script setup></script>
-  
-  <style scoped>
-  .card-img-top {
-    border-radius: 50px;
-    padding: 20px;
-  }
-  .card {
-    border-radius: 20px;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 0.0625em 0.0625em,
-      rgba(0, 0, 0, 0.25) 0px 0.125em 0.5em,
-      rgba(255, 255, 255, 0.1) 0px 0px 0px 1px inset;
-  }
-  .card-body {
-    padding: 25px;
-    margin: -15px;
-  }
-  
-  .button-hover-addcart {
-    border: 2px solid #767676;
-    background: transparent;
-    color: #767676;
-    text-transform: uppercase;
-    overflow: hidden;
-    letter-spacing: 0.07rem;
-    transition: all 0.2s ease-in-out;
-    position: relative;
-  }
-  
-  .button-hover-addcart span {
-    transition: all 0.2s ease-in-out;
-  }
-  
-  .button-hover-addcart .fa {
-    position: absolute;
-    font-size: 1.2rem;
-    top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    color: #1779ba;
-    right: -20px;
-    transition: 0.4s right cubic-bezier(0.38, 0.6, 0.48, 1);
-  }
-  
-  .button-hover-addcart:hover {
-    border-color: #1779ba;
-    background: transparent;
-    transition: border-color 0.2s;
-  }
-  
-  .button-hover-addcart:hover span {
-    margin-right: 20px;
-    color: #1779ba;
-  }
-  
-  .button-hover-addcart:hover .fa {
-    right: 12px;
-  }
-  </style>
+</template>
+
+<script setup>
+import { ref } from "vue";
+import { toast } from 'vue3-toastify';
+import { ToasityConfig } from "../components/config/tostoastify.config"
+import checkBox from "@/components/checkBox.vue";
+const cartItems = ref([]);
+const loading = ref(false);
+console.log(cartItems.value)
+
+const items = ref([
+    {
+        id: 1,
+        name: "Barca Retro Shirt",
+        price: 29,
+        quantity: 1,
+        size: "S M L XL",
+        imgSrc: "/src/assets/image/womenshirt1.jpg",
+    },
+    {
+        id: 2,
+        name: "Blue Shirt , White T-Shirt",
+        price: 17,
+        quantity: 2,
+        size: "S M L XL",
+        imgSrc: "/src/assets/image/womenshirt2.jpg",
+    },
+    {
+        id: 3,
+        name: "Blue Shirt , White T-Shirt",
+        price: 22,
+        quantity: 3,
+        size: "S M L XL",
+        imgSrc: "/src/assets/image/womenshirt3.jpg",
+    },
+    {
+        id: 4,
+        name: "Blue Shirt , White T-Shirt",
+        price: 28,
+        quantity: 4,
+        size: "S M L XL",
+        imgSrc: "/src/assets/image/womenshirt4.jpg",
+    },
+    {
+        id: 5,
+        name: "Blue Shirt , White T-Shirt",
+        price: 54,
+        quantity: 5,
+        size: "S M L XL",
+        imgSrc: "/src/assets/image/womenshirt5.jpg",
+    },
+
+]);
+
+
+const addToCart = (item) => {
+    const existingItemIndex = cartItems.value.findIndex(cartItem => cartItem.id === item.id);
+
+    if (existingItemIndex !== -1) {
+        // If item is already in cart, increase its quantity
+        cartItems.value[existingItemIndex].quantity++;
+    } else {
+        // If item is not in cart, add it to cart with quantity 1
+        cartItems.value.push({ ...item, quantity: 1 });
+    }
+};
+
+const increaseQuantity = (index) => {
+    cartItems.value[index].quantity++;
+};
+
+const decreaseQuantity = (index) => {
+    if (cartItems.value[index].quantity > 1) {
+        cartItems.value[index].quantity--;
+    }
+};
+
+const buyNow = (index) => {
+    loading.value = true;
+    setTimeout(() => {
+        toast("Purchase a successfull", ToasityConfig);
+        loading.value = false;
+        cartItems.value.splice(index, 1)
+    }, 1500); // Change the delay as needed
+};
+
+</script>
+
+<style scoped>
+
+
+</style>
